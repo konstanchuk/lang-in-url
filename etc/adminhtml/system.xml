@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Language In Url Extension for Magento 2
+ *
+ * @author     Volodymyr Konstanchuk http://konstanchuk.com
+ * @copyright  Copyright (c) 2017 The authors
+ * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="web" translate="label" sortOrder="1" showInDefault="1"
+                 showInWebsite="1" showInStore="1">
+            <tab>general</tab>
+            <resource>Magento_Backend::web</resource>
+            <group id="langinurl" translate="label" type="text" sortOrder="100" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <label>Language in Url</label>
+                <field id="enable" translate="label comment" type="select" sortOrder="10"
+                       showInDefault="0" showInWebsite="1" showInStore="0">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <validate>required-entry</validate>
+                    <comment><![CDATA[
+                    <b>Enable this option only after making sure that all other settings are correct.</b>
+                    <br />
+                    Otherwise, errors may occur and the module will not work correctly.
+]]></comment>
+                </field>
+                <field id="code" translate="label comment" type="text" sortOrder="20"
+                       showInDefault="0" showInWebsite="0" showInStore="1">
+                    <label>Language code</label>
+                    <comment><![CDATA[for example: site.com/<span style="color:red">en</span>/]]></comment>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="always_use_code" translate="label comment" type="select" sortOrder="30"
+                       showInDefault="0" showInWebsite="1" showInStore="0">
+                    <label>Always use code</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="store_switch_type" translate="label comment" type="select"
+                       sortOrder="40" showInDefault="0" showInWebsite="1" showInStore="0">
+                    <label>Store switch type</label>
+                    <source_model>Konstanchuk\LangInUrl\Model\System\Config\StoreSwitch</source_model>
+                </field>
+                <field id="exclude_request_uri" translate="label comment" type="textarea" sortOrder="50"
+                       showInDefault="0" showInWebsite="1" showInStore="0">
+                    <label>Exclude Request Uri</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
